@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAYMENT METHOD</title>
+</head>
+</body>
+   <a href="index.html">Cab Booking</a>
+   <p>Payment methods</p>
+   <div>Cash</div>
+        <button type="button">Pay Cash</button>  
+     <div>Payment using credit or debit card</div>
+   <button id="btn">pay via card</button>
+
+
+
+
+   <form id="method">
+      <div class="card-details">
+        <p>Pay using Credit or Debit card</p>
+      <div class="card-number">
+        <label> Card Number </label><br>
+        <input type="text" class="card-number-field" placeholder="###-###-###" required/>
+      </div><br/>
+      <div class="date-number">
+        <label> Expire Date </label><br>
+        <input type="text" class="date-number-field" placeholder="DD-MM-YY" required />
+      </div><br/>
+      <div class="cvv-number">
+        <label> CVV number </label><br>
+        <input type="text" class="cvv-number-field" placeholder="xxx" required />
+      </div><br/>
+      <div class="nameholder-number">
+        <label> Card Holder name </label><br>
+        <input type="text" class="card-name-field" placeholder="Enter your Name" required/>
+      </div><br/>
+   </form>
+   
+      <script>
+    const button = document.getElementById('btn');
+     btn.addEventListener('click', () => {
+     const method = document.getElementById('method');
+   
+     if (method.style.visibility === 'hidden') {
+       method.style.visibility = 'visible';
+     } else {
+       method.style.visibility = 'hidden';
+     }
+   });
+
+
+   </script>
+   
+      <button type="submit" class="submit-now-btn"> Submit </button>
+      <style>
+       .submit-now-btn{
+           background-color:#4CAF50;
+           border: none;
+           color:black;
+           padding: 15px 32px;
+           
+           text-decoration:none;
+           display:inline-block;
+           font-size:16px;
+           margin:4px 2px;
+           cursor:pointer;
+    }
+   </style>
+       
+       
+   
+ </div>
+   
+   </body>
+   </html>

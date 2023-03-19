@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
+    <script src='main.js'></script>
+</head>
+
+<style>
+
+
+html{
+        scroll-behavior: smooth;
+    }
+    header{
+        height: 50px;
+        position: relative;
+        width: 100%;
+        top: 0;
+    }
+    p{
+        font-size: large;
+    }
+    span{
+        font-size: larger;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color: white;
+    }#help{
+        padding-left: 30px;
+        font-size: medium;
+        font-style: oblique;
+        color: white;
+        
+    }
+    .login-signup{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .login-signup a{
+        margin-left: 20px;
+        float: right;
+    }
+    footer{
+        position:relative;
+        width: 100vw;
+        height: 50vh;
+        bottom: 0;
+        background-color: black;
+    }
+    li{
+        list-style-type: none;
+        text-align:left;
+        
+    }
+
+    #right{
+        float: right;
+    }
+    .container{
+        display: flex;
+        column-gap: 10px;
+    }
+    a:link{
+        color: white;
+    }
+    a:hover{
+        color:aliceblue;
+    }
+    a:visited{
+        color:grey;
+    }
+    #HeaderRight{
+        float: right;
+    }
+    .justify-content-end{
+        color: gray;
+    }
+    .gototopbtn{
+        float: right;
+        position:fixed;
+        width: 50px;
+        height: 50px;
+        background:black ;
+        bottom: 40px;
+        right: 50px;
+
+        text-decoration: none;
+        text-align:center ;
+        line-height: 50px;
+        color: white;
+    }
+    .carousel-image{
+        align-content: center;
+        height: 100vh;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding-top: 40px;
+        background-position: center;
+    }
+
+    label{
+    display:block;
+    font-weight:bold;
+    margin-top:5px;
+
+  }
+  select{
+    padding:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:5px;
+    font-size:10px;
+    background-color:#f2f2f2;
+    
+  }
+  #button{
+    font-size:40px;
+    background-color:lightskyblue ;
+  }
+  #origin{
+    font-size: medium;
+  }
+  #destination{
+    font-size: medium;
+  }
+  #mode{
+    font-size: medium;
+  }
+  *{
+          margin: 0;
+          padding: 0;
+      }
+      #map{
+          height: 500px;
+          width: 100%;
+      }
+      
+      
+      
+</style>
+
+<body>
+    
+
+    <form>
+      
+    <i class="far fa-dot-circle">  
+    <b>origin: </b></i>  
+    <div class="col-xs-4" class="form-control"></div>
+    <label for="origin"  ></label>
+      <select id="origin" name="origin">
+        <option value="chennai">Chennai</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="pollachi">pollachi</option>
+            <option value="Erode">Erode</option>
+            <option value="Vellore">Vellore</option>
+      </select>
+
+      <br><br>
+      <i class="fas fa-map-marker-alt" > 
+        <b>Destination: </b></i>  
+      <label for="destination"></label>
+      <div class="col-xs-4" class="form-control"></div>
+
+      <select id="destination" name="destination">
+        <option value="Banglore">Bangalore</option>
+        <option value="Coimbatore">Coimbatore</option>
+        <option value="cochi">cochi</option>
+        <option value="kerala">kerala</option>
+        <option value="goa">goa</option>
+      </select>
+
+     <br> <br><button type="button" onclick="calculateDistance()">  Calculate Distance</button><br>
+    </form>
+
+    <p id="distance"></p>
+    <script>
+        function calculateDistance() {
+          var origin = document.getElementById("origin").value;
+          var destination = document.getElementById("destination").value;
+          
+          if (origin === "chennai" && destination === "banglore" || origin === "banglore" && destination === "chennai") {
+            var distance = 2000;
+          } else if 
+            (origin ="Coimbatore" && destination === "Hyderabad" || origin === "Coimbatore" && destination === "Hyderabad") {
+              var distance = 1800;
+            }else if(origin ="pollachi" && destination === "cochi" || origin === "cochi" && destination === "pollachi"){
+              var distance = 2500;
+            }else if(origin ="Erode" && destination === "kerala" || origin === "kerala" && destination === "Erode"){
+              var distance = 1200;
+            }else if(origin ="Vellore" && destination === "goa" || origin === "goa" && destination === "Vellore"){
+              var distance = 1600;
+            }else{
+              var distance = 0;
+            }
+            
+          
+    
+          document.getElementById("distance").innerHTML = "The distance between " + origin + " and " + destination + " is " + distance + " km.";
+          }
+          
+    </script>
+
+    <br><br> <b>Mode Of Transportation: </b>
+    <select id="mode">
+
+      <option value="Driving">Motor Bike</option><br>
+
+      <option value="Driving">Car</option>
+      </select>
+
+      <div class="col-xs-offset-2-col-xs-10"></div>
+     
+    <button class="btn btn-info btn-lg"><i class="fas fa-directions" id="button" onclick="location.href='slidingform.html'""></i></button>
+
+    <br><br><body onload="initMap()">
+      
+        <div id="map"></div>
+        <script>
+            function initMap() {
+                var location= {lat: 13.082680, lng: 80.270721};
+              // Create a new map object centered on a specific location
+              var map = new google.maps.Map(document.getElementById('map'), {
+               zoom: 8,center:location
+              });
+            }
+           </script> 
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDASgN8Sto2hXYo16PvI3iissyL0RoCB3k&v=weekly">
+         </script>
+        
+  </body>
+  
+  </html>
+
